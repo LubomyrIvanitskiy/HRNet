@@ -1,0 +1,9 @@
+#Do not use opencv import, for docker we need another command. Recommendation use dockerfile starts from jjanzic/docker-python3-opencv
+munkres~=1.1.4
+numpy~=1.18.5
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch~=1.6.0
+matplotlib~=3.3.3
+torchvision~=0.7.0
+ffmpeg~=1.4
+vidgear~=0.1.9
