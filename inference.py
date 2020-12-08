@@ -8,10 +8,10 @@ import torch
 from vidgear.gears import CamGear
 import numpy as np
 
-
 from SimpleHRNet import SimpleHRNet
 from misc.visualization import draw_points, draw_skeleton, draw_points_and_skeleton, joints_dict, check_video_rotation
 from misc.utils import find_person_id_associations
+
 
 def main(filename,
          hrnet_m,
@@ -22,8 +22,6 @@ def main(filename,
          image_resolution,
          max_batch_size,
          device):
-
-
     if device is not None:
         device = torch.device(device)
     else:
@@ -76,14 +74,14 @@ if __name__ == '__main__':
                         type=str, default=None)
     parser.add_argument("--hrnet_m", "-m", help="network model - 'HRNet' or 'PoseResNet'", type=str, default='HRNet')
     parser.add_argument("--hrnet_c", "-c", help="hrnet parameters - number of channels (if model is HRNet), "
-                                                "resnet size (if model is PoseResNet)", type=int, default=48)
+                                                "resnet size (if model is PoseResNet)", type=int, default=32)
     parser.add_argument("--hrnet_j", "-j", help="hrnet parameters - number of joints", type=int, default=17)
     parser.add_argument("--hrnet_weights", "-w", help="hrnet parameters - path to the pretrained weights",
-                        type=str, default="./weights/pose_hrnet_w48_384x288.pth")
+                        type=str, default="./weights/pose_hrnet_w32_256x192.pth")
     parser.add_argument("--hrnet_joints_set",
                         help="use the specified set of joints ('coco' and 'mpii' are currently supported)",
                         type=str, default="coco")
-    parser.add_argument("--image_resolution", "-r", help="image resolution", type=str, default='(384, 288)')
+    parser.add_argument("--image_resolution", "-r", help="image resolution", type=str, default='(256, 192)')
     parser.add_argument("--max_batch_size", help="maximum batch size used for inference", type=int, default=16)
     parser.add_argument("--device", help="device to be used (default: cuda, if available)."
                                          "Set to `cuda` to use all available GPUs (default); "
